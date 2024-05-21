@@ -10,7 +10,7 @@ def cond_prob(table, evidence, evidence_value, target, target_value):
   p_b_a = sum([1 if v==evidence_value else 0 for v in e_list])/len(e_list)
   return p_b_a + .01
 def cond_probs_product(table, evidence_row, target, target_value):
-  evidence_columns = up_drop_column(table, 'Flu')
+  evidence_columns = up_drop_column(table, target)
   evidence_columns = up_list_column_names(evidence_columns)
   return up_product([cond_prob(table, e[0], e[1], target, target_value) for e in up_zip_lists(evidence_columns, evidence_row)])
 def prior_prob(table, target, target_value):
